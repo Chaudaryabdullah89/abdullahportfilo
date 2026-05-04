@@ -1,0 +1,129 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  password      String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  category    String
+  image       String
+  description String
+  challenge   String?  @default("")
+  solution    String?  @default("")
+  results     String?  @default("")
+  role        String?  @default("Lead Developer")
+  markdown    String?  @default("")
+  tags        String   @default("")
+  liveUrl     String?
+  githubUrl   String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+
+model Blog {
+  id          String   @id @default(cuid())
+  title       String
+  category    String
+  summary     String?  @default("")
+  content     String
+  image       String?  @default("")
+  tags        String   @default("")
+  readTime    String?  @default("5 min read")
+  author      String   @default("Muhammad Abdullah")
+  date        String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+
+model Experience {
+  id          String   @id @default(cuid())
+  role        String
+  company     String
+  period      String
+  location    String
+  description String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Skill {
+  id        String   @id @default(cuid())
+  name      String
+  category  String   // "Frontend", "Backend", "Other"
+  icon      String
+  order     Int      @default(0)
+}
+
+model SiteSettings {
+  id              String  @id @default("global")
+  heroName        String  @default("Muhammad Abdullah")
+  heroTitle       String  @default("Full Stack Developer")
+  heroBadge       String  @default("Available for hire")
+  heroImage       String?
+  metaTitle       String  @default("Muhammad Abdullah | Portfolio")
+  metaDescription String  @default("Software Engineer Portfolio")
+  githubUrl       String?
+  linkedinUrl     String?
+  email           String?
+  isAvailable     Boolean  @default(true)
+  updatedAt       DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  projectType String?
+  budget      String?
+  read      Boolean  @default(false)
+  replied   Boolean  @default(false)
+  responseBody String?
+  respondedAt DateTime?
+  portalToken  String?   // New: Security token for portal access
+  createdAt DateTime @default(now())
+  
+  // New: Conversation Thread
+  thread    MessageUpdate[]
+}
+
+model MessageUpdate {
+  id          String   @id @default(cuid())
+  messageId   String
+  sender      String   // "admin" or "user"
+  content     String
+  createdAt   DateTime @default(now())
+  
+  inquiry     ContactMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+}
+
+model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
