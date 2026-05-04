@@ -50,7 +50,7 @@ export default function RootLayout({
           <Toaster position="top-right" richColors theme="dark" />
           <Preloader />
           <MobileMenu />
-          {/* <CustomCursor /> */}
+          <CustomCursor />
           <ScrollReveal />
           <SmoothScroll>{children}</SmoothScroll>
         </SocketProvider>
