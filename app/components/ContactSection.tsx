@@ -99,6 +99,7 @@ const ContactSection = () => {
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Email Address</label>
                       <input 
+                        name="email"
                         type="email" 
                         required
                         className="w-full bg-white border border-gray-200 px-6 py-4 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4ec9b0]/20 focus:border-[#4ec9b0] transition-all"
@@ -110,6 +111,7 @@ const ContactSection = () => {
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Project Message</label>
                    <textarea 
+                     name="message"
                      required
                      rows={5}
                      className="w-full bg-white border border-gray-200 px-6 py-4 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4ec9b0]/20 focus:border-[#4ec9b0] transition-all resize-none"
