@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Send, Mail, MapPin, Linkedin, Github } from "lucide-react";
+import { Send, Mail, MapPin } from "lucide-react";
 import { toast } from "sonner";
 
 const ContactSection = () => {
@@ -18,7 +18,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-40 px-12 bg-white font-[family-name:var(--font-space-grotesk)]">
+    <section id="contact" className="py-40 px-12 bg-white font-(family-name:--font-space-grotesk)">
       <div className="max-w-6xl mx-auto">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -30,7 +30,7 @@ const ContactSection = () => {
                  Get In Touch
                </h2>
                <h3 className="text-6xl font-black text-gray-900 tracking-tighter leading-tight">
-                 Let's build <br/> something real.
+                 Let&apos;s build <br/> something real.
                </h3>
             </div>
             

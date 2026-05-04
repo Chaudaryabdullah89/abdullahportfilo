@@ -34,6 +34,7 @@ const AdminSidebar = () => {
   ];
 
   const getIsActive = (path: string) => {
+    if (!pathname) return false;
     if (path === "/admin/dashboard" && pathname === "/admin/dashboard") return true;
     if (path !== "/admin/dashboard" && pathname.startsWith(path)) return true;
     return false;

@@ -68,11 +68,7 @@ const SkillsSection = async () => {
                         <div key={skill.id} className="flex flex-col items-center gap-8 group">
                            <div className="relative w-24 h-24 flex items-center justify-center transition-all duration-500 group-hover:scale-110">
                               <div className="text-black/80 group-hover:text-black transition-colors flex items-center justify-center w-full h-full">
-                                {skill.image ? (
-                                   <img src={skill.image} alt={skill.name} className="w-16 h-16 object-contain grayscale group-hover:grayscale-0 transition-all" />
-                                ) : (
-                                   <Icon size={56} className="stroke-[1.5px]" />
-                                )}
+                                 <Icon size={56} className="stroke-[1.5px]" />
                               </div>
                               <div className="absolute inset-0 border-2 border-dashed border-black/5 rounded-full rotate-0 group-hover:rotate-90 group-hover:border-black/20 transition-all duration-1000 scale-110 pointer-events-none"></div>
                            </div>

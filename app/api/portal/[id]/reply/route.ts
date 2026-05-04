@@ -25,7 +25,11 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       select: { portalToken: true, name: true, email: true }
     });
 
-    if (!isAdmin && (!inquiry || !inquiry.portalToken || authToken !== inquiry.portalToken)) {
+    if (!inquiry) {
+      return NextResponse.json({ error: "Inquiry not found" }, { status: 404 });
+    }
+
+    if (!isAdmin && (!inquiry.portalToken || authToken !== inquiry.portalToken)) {
       return NextResponse.json({ error: "Unauthorized access or invalid token" }, { status: 403 });
     }
 

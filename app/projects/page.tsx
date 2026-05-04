@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Github, Code2, Layers, Cpu } from "lucide-react";
+import { ArrowLeft, ExternalLink, Code2, Layers, Cpu } from "lucide-react";
 import Footer from "../components/Footer";
 
 import { prisma } from "@/lib/prisma";

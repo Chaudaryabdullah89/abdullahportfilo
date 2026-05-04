@@ -75,26 +75,6 @@ export async function POST(req: Request) {
       `,
     });
 
-    // 3. Update Registry and Create Thread
-    const [updatedMessage] = await prisma.$transaction([
-      prisma.contactMessage.update({
-        where: { id: messageId },
-        data: {
-          replied: true,
-          responseBody: responseText,
-          respondedAt: new Date(),
-          read: true, 
-        },
-      }),
-      prisma.messageUpdate.create({
-        data: {
-          messageId,
-          sender: "admin",
-          content: responseText,
-        },
-      }),
-    ]);
-
     return NextResponse.json({ 
       success: true, 
       message: "RESPONSE_SUCCESSFULLY_DISPATCHED",
