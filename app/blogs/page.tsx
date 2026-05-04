@@ -5,6 +5,8 @@ import Footer from "../components/Footer";
 import { prisma } from "@/lib/prisma";
 import NewsletterForm from "../components/NewsletterForm";
 
+export const dynamic = 'force-dynamic';
+
 export default async function BlogListPage() {
   const blogs = await prisma.blog.findMany({
     orderBy: { createdAt: "desc" },

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, Globe, Terminal } from "lucide-react";
 import Footer from "@/app/components/Footer";
 
+export const dynamic = 'force-dynamic';
+
 // Custom Github Icon as it's missing in the installed lucide-react version
 const GithubIcon = ({ size = 20, ...props }) => (
   <svg

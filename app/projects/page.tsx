@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink, Code2, Layers, Cpu } from "lucide-react";
 import Footer from "../components/Footer";
 
+export const dynamic = 'force-dynamic';
+
 import { prisma } from "@/lib/prisma";
 
 export default async function ProjectsPage() {

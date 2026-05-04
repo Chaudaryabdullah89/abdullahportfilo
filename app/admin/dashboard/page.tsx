@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { Eye, MessageSquare, Folder, Users, Layers, Award } from "lucide-react";
 import AvailabilityToggle from "../components/AvailabilityToggle";
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminDashboard() {
   const [
     projectCount, 

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, Download, Mail, Calendar, MapPin } from "lucide-react";
 import Footer from "../components/Footer";
 import Magnetic from "../components/Magnetic";
+
+export const dynamic = 'force-dynamic';
 const GithubIcon = ({ size = 28, ...props }) => (
 <svg
   xmlns="http://www.w3.org/2000/svg"
