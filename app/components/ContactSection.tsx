@@ -10,11 +10,32 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    // Logic implementation
-    setTimeout(() => {
-      toast.success("Message sent successfully!");
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        toast.error("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again later.");
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -68,6 +89,7 @@ const ContactSection = () => {
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Full Name</label>
                       <input 
+                        name="name"
                         type="text" 
                         required
                         className="w-full bg-white border border-gray-200 px-6 py-4 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4ec9b0]/20 focus:border-[#4ec9b0] transition-all"

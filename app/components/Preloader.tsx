@@ -60,6 +60,7 @@ const Preloader = () => {
 
       // ── Phase 0: Setup ──
       tl.set(containerRef.current, { visibility: "visible" })
+        .set(overlayRef.current, { opacity: 1 })
         .set(bigTextRef.current,  { y: "0%" })
         .set(cells || [],         { opacity: 1, scaleX: 1, scaleY: 1 })
         .set(nameChars || [],     { opacity: 0, y: 20 })
@@ -193,10 +194,13 @@ const Preloader = () => {
       onComplete: () => {
         container.style.display = "none";
         document.body.style.overflow = "";
+        gsap.set(container, { visibility: "hidden" });
       },
     });
 
-    tl.set(slices, { yPercent: -100, display: "block" })
+    tl.set(container, { visibility: "visible" })
+      .set(overlayRef.current, { opacity: 0 })
+      .set(slices, { yPercent: -100, display: "block" })
       .to(slices, {
         yPercent: 0,
         duration: 0.5,
